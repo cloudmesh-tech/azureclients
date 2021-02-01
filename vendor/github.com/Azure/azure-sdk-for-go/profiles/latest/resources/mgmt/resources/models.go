@@ -1,6 +1,6 @@
 // +build go1.9
 
-// Copyright 2020 Microsoft Corporation
+// Copyright 2021 Microsoft Corporation
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -22,18 +22,38 @@ package resources
 import (
 	"context"
 
-	original "github.com/Azure/azure-sdk-for-go/services/resources/mgmt/2019-10-01/resources"
+	original "github.com/Azure/azure-sdk-for-go/services/resources/mgmt/2020-10-01/resources"
 )
 
 const (
 	DefaultBaseURI = original.DefaultBaseURI
 )
 
+type AliasPathAttributes = original.AliasPathAttributes
+
+const (
+	Modifiable AliasPathAttributes = original.Modifiable
+	None       AliasPathAttributes = original.None
+)
+
+type AliasPathTokenType = original.AliasPathTokenType
+
+const (
+	Any          AliasPathTokenType = original.Any
+	Array        AliasPathTokenType = original.Array
+	Boolean      AliasPathTokenType = original.Boolean
+	Integer      AliasPathTokenType = original.Integer
+	NotSpecified AliasPathTokenType = original.NotSpecified
+	Number       AliasPathTokenType = original.Number
+	Object       AliasPathTokenType = original.Object
+	String       AliasPathTokenType = original.String
+)
+
 type AliasPatternType = original.AliasPatternType
 
 const (
-	Extract      AliasPatternType = original.Extract
-	NotSpecified AliasPatternType = original.NotSpecified
+	AliasPatternTypeExtract      AliasPatternType = original.AliasPatternTypeExtract
+	AliasPatternTypeNotSpecified AliasPatternType = original.AliasPatternTypeNotSpecified
 )
 
 type AliasType = original.AliasType
@@ -60,6 +80,14 @@ type DeploymentMode = original.DeploymentMode
 const (
 	Complete    DeploymentMode = original.Complete
 	Incremental DeploymentMode = original.Incremental
+)
+
+type ExpressionEvaluationOptionsScopeType = original.ExpressionEvaluationOptionsScopeType
+
+const (
+	ExpressionEvaluationOptionsScopeTypeInner        ExpressionEvaluationOptionsScopeType = original.ExpressionEvaluationOptionsScopeTypeInner
+	ExpressionEvaluationOptionsScopeTypeNotSpecified ExpressionEvaluationOptionsScopeType = original.ExpressionEvaluationOptionsScopeTypeNotSpecified
+	ExpressionEvaluationOptionsScopeTypeOuter        ExpressionEvaluationOptionsScopeType = original.ExpressionEvaluationOptionsScopeTypeOuter
 )
 
 type OnErrorDeploymentType = original.OnErrorDeploymentType
@@ -93,13 +121,30 @@ const (
 	ProvisioningOperationWaiting                    ProvisioningOperation = original.ProvisioningOperationWaiting
 )
 
+type ProvisioningState = original.ProvisioningState
+
+const (
+	ProvisioningStateAccepted     ProvisioningState = original.ProvisioningStateAccepted
+	ProvisioningStateCanceled     ProvisioningState = original.ProvisioningStateCanceled
+	ProvisioningStateCreated      ProvisioningState = original.ProvisioningStateCreated
+	ProvisioningStateCreating     ProvisioningState = original.ProvisioningStateCreating
+	ProvisioningStateDeleted      ProvisioningState = original.ProvisioningStateDeleted
+	ProvisioningStateDeleting     ProvisioningState = original.ProvisioningStateDeleting
+	ProvisioningStateFailed       ProvisioningState = original.ProvisioningStateFailed
+	ProvisioningStateNotSpecified ProvisioningState = original.ProvisioningStateNotSpecified
+	ProvisioningStateReady        ProvisioningState = original.ProvisioningStateReady
+	ProvisioningStateRunning      ProvisioningState = original.ProvisioningStateRunning
+	ProvisioningStateSucceeded    ProvisioningState = original.ProvisioningStateSucceeded
+	ProvisioningStateUpdating     ProvisioningState = original.ProvisioningStateUpdating
+)
+
 type ResourceIdentityType = original.ResourceIdentityType
 
 const (
-	None                       ResourceIdentityType = original.None
-	SystemAssigned             ResourceIdentityType = original.SystemAssigned
-	SystemAssignedUserAssigned ResourceIdentityType = original.SystemAssignedUserAssigned
-	UserAssigned               ResourceIdentityType = original.UserAssigned
+	ResourceIdentityTypeNone                       ResourceIdentityType = original.ResourceIdentityTypeNone
+	ResourceIdentityTypeSystemAssigned             ResourceIdentityType = original.ResourceIdentityTypeSystemAssigned
+	ResourceIdentityTypeSystemAssignedUserAssigned ResourceIdentityType = original.ResourceIdentityTypeSystemAssignedUserAssigned
+	ResourceIdentityTypeUserAssigned               ResourceIdentityType = original.ResourceIdentityTypeUserAssigned
 )
 
 type TagsPatchOperation = original.TagsPatchOperation
@@ -117,8 +162,10 @@ const (
 	ResourceIDOnly       WhatIfResultFormat = original.ResourceIDOnly
 )
 
+type APIProfile = original.APIProfile
 type Alias = original.Alias
 type AliasPath = original.AliasPath
+type AliasPathMetadata = original.AliasPathMetadata
 type AliasPattern = original.AliasPattern
 type BaseClient = original.BaseClient
 type BasicDependency = original.BasicDependency
@@ -172,6 +219,7 @@ type DeploymentsWhatIfFuture = original.DeploymentsWhatIfFuture
 type ErrorAdditionalInfo = original.ErrorAdditionalInfo
 type ErrorResponse = original.ErrorResponse
 type ExportTemplateRequest = original.ExportTemplateRequest
+type ExpressionEvaluationOptions = original.ExpressionEvaluationOptions
 type GenericResource = original.GenericResource
 type GenericResourceExpanded = original.GenericResourceExpanded
 type GenericResourceFilter = original.GenericResourceFilter
@@ -205,17 +253,21 @@ type OperationsClient = original.OperationsClient
 type ParametersLink = original.ParametersLink
 type Plan = original.Plan
 type Provider = original.Provider
+type ProviderExtendedLocation = original.ProviderExtendedLocation
 type ProviderListResult = original.ProviderListResult
 type ProviderListResultIterator = original.ProviderListResultIterator
 type ProviderListResultPage = original.ProviderListResultPage
 type ProviderOperationDisplayProperties = original.ProviderOperationDisplayProperties
 type ProviderResourceType = original.ProviderResourceType
+type ProviderResourceTypeListResult = original.ProviderResourceTypeListResult
+type ProviderResourceTypesClient = original.ProviderResourceTypesClient
 type ProvidersClient = original.ProvidersClient
 type Reference = original.Reference
 type Resource = original.Resource
 type ScopedDeployment = original.ScopedDeployment
 type ScopedDeploymentWhatIf = original.ScopedDeploymentWhatIf
 type Sku = original.Sku
+type StatusMessage = original.StatusMessage
 type SubResource = original.SubResource
 type TagCount = original.TagCount
 type TagDetails = original.TagDetails
@@ -250,8 +302,8 @@ func NewClientWithBaseURI(baseURI string, subscriptionID string) Client {
 func NewDeploymentListResultIterator(page DeploymentListResultPage) DeploymentListResultIterator {
 	return original.NewDeploymentListResultIterator(page)
 }
-func NewDeploymentListResultPage(getNextPage func(context.Context, DeploymentListResult) (DeploymentListResult, error)) DeploymentListResultPage {
-	return original.NewDeploymentListResultPage(getNextPage)
+func NewDeploymentListResultPage(cur DeploymentListResult, getNextPage func(context.Context, DeploymentListResult) (DeploymentListResult, error)) DeploymentListResultPage {
+	return original.NewDeploymentListResultPage(cur, getNextPage)
 }
 func NewDeploymentOperationsClient(subscriptionID string) DeploymentOperationsClient {
 	return original.NewDeploymentOperationsClient(subscriptionID)
@@ -262,8 +314,8 @@ func NewDeploymentOperationsClientWithBaseURI(baseURI string, subscriptionID str
 func NewDeploymentOperationsListResultIterator(page DeploymentOperationsListResultPage) DeploymentOperationsListResultIterator {
 	return original.NewDeploymentOperationsListResultIterator(page)
 }
-func NewDeploymentOperationsListResultPage(getNextPage func(context.Context, DeploymentOperationsListResult) (DeploymentOperationsListResult, error)) DeploymentOperationsListResultPage {
-	return original.NewDeploymentOperationsListResultPage(getNextPage)
+func NewDeploymentOperationsListResultPage(cur DeploymentOperationsListResult, getNextPage func(context.Context, DeploymentOperationsListResult) (DeploymentOperationsListResult, error)) DeploymentOperationsListResultPage {
+	return original.NewDeploymentOperationsListResultPage(cur, getNextPage)
 }
 func NewDeploymentsClient(subscriptionID string) DeploymentsClient {
 	return original.NewDeploymentsClient(subscriptionID)
@@ -274,8 +326,8 @@ func NewDeploymentsClientWithBaseURI(baseURI string, subscriptionID string) Depl
 func NewGroupListResultIterator(page GroupListResultPage) GroupListResultIterator {
 	return original.NewGroupListResultIterator(page)
 }
-func NewGroupListResultPage(getNextPage func(context.Context, GroupListResult) (GroupListResult, error)) GroupListResultPage {
-	return original.NewGroupListResultPage(getNextPage)
+func NewGroupListResultPage(cur GroupListResult, getNextPage func(context.Context, GroupListResult) (GroupListResult, error)) GroupListResultPage {
+	return original.NewGroupListResultPage(cur, getNextPage)
 }
 func NewGroupsClient(subscriptionID string) GroupsClient {
 	return original.NewGroupsClient(subscriptionID)
@@ -286,14 +338,14 @@ func NewGroupsClientWithBaseURI(baseURI string, subscriptionID string) GroupsCli
 func NewListResultIterator(page ListResultPage) ListResultIterator {
 	return original.NewListResultIterator(page)
 }
-func NewListResultPage(getNextPage func(context.Context, ListResult) (ListResult, error)) ListResultPage {
-	return original.NewListResultPage(getNextPage)
+func NewListResultPage(cur ListResult, getNextPage func(context.Context, ListResult) (ListResult, error)) ListResultPage {
+	return original.NewListResultPage(cur, getNextPage)
 }
 func NewOperationListResultIterator(page OperationListResultPage) OperationListResultIterator {
 	return original.NewOperationListResultIterator(page)
 }
-func NewOperationListResultPage(getNextPage func(context.Context, OperationListResult) (OperationListResult, error)) OperationListResultPage {
-	return original.NewOperationListResultPage(getNextPage)
+func NewOperationListResultPage(cur OperationListResult, getNextPage func(context.Context, OperationListResult) (OperationListResult, error)) OperationListResultPage {
+	return original.NewOperationListResultPage(cur, getNextPage)
 }
 func NewOperationsClient(subscriptionID string) OperationsClient {
 	return original.NewOperationsClient(subscriptionID)
@@ -304,8 +356,14 @@ func NewOperationsClientWithBaseURI(baseURI string, subscriptionID string) Opera
 func NewProviderListResultIterator(page ProviderListResultPage) ProviderListResultIterator {
 	return original.NewProviderListResultIterator(page)
 }
-func NewProviderListResultPage(getNextPage func(context.Context, ProviderListResult) (ProviderListResult, error)) ProviderListResultPage {
-	return original.NewProviderListResultPage(getNextPage)
+func NewProviderListResultPage(cur ProviderListResult, getNextPage func(context.Context, ProviderListResult) (ProviderListResult, error)) ProviderListResultPage {
+	return original.NewProviderListResultPage(cur, getNextPage)
+}
+func NewProviderResourceTypesClient(subscriptionID string) ProviderResourceTypesClient {
+	return original.NewProviderResourceTypesClient(subscriptionID)
+}
+func NewProviderResourceTypesClientWithBaseURI(baseURI string, subscriptionID string) ProviderResourceTypesClient {
+	return original.NewProviderResourceTypesClientWithBaseURI(baseURI, subscriptionID)
 }
 func NewProvidersClient(subscriptionID string) ProvidersClient {
 	return original.NewProvidersClient(subscriptionID)
@@ -322,11 +380,17 @@ func NewTagsClientWithBaseURI(baseURI string, subscriptionID string) TagsClient 
 func NewTagsListResultIterator(page TagsListResultPage) TagsListResultIterator {
 	return original.NewTagsListResultIterator(page)
 }
-func NewTagsListResultPage(getNextPage func(context.Context, TagsListResult) (TagsListResult, error)) TagsListResultPage {
-	return original.NewTagsListResultPage(getNextPage)
+func NewTagsListResultPage(cur TagsListResult, getNextPage func(context.Context, TagsListResult) (TagsListResult, error)) TagsListResultPage {
+	return original.NewTagsListResultPage(cur, getNextPage)
 }
 func NewWithBaseURI(baseURI string, subscriptionID string) BaseClient {
 	return original.NewWithBaseURI(baseURI, subscriptionID)
+}
+func PossibleAliasPathAttributesValues() []AliasPathAttributes {
+	return original.PossibleAliasPathAttributesValues()
+}
+func PossibleAliasPathTokenTypeValues() []AliasPathTokenType {
+	return original.PossibleAliasPathTokenTypeValues()
 }
 func PossibleAliasPatternTypeValues() []AliasPatternType {
 	return original.PossibleAliasPatternTypeValues()
@@ -340,6 +404,9 @@ func PossibleChangeTypeValues() []ChangeType {
 func PossibleDeploymentModeValues() []DeploymentMode {
 	return original.PossibleDeploymentModeValues()
 }
+func PossibleExpressionEvaluationOptionsScopeTypeValues() []ExpressionEvaluationOptionsScopeType {
+	return original.PossibleExpressionEvaluationOptionsScopeTypeValues()
+}
 func PossibleOnErrorDeploymentTypeValues() []OnErrorDeploymentType {
 	return original.PossibleOnErrorDeploymentTypeValues()
 }
@@ -348,6 +415,9 @@ func PossiblePropertyChangeTypeValues() []PropertyChangeType {
 }
 func PossibleProvisioningOperationValues() []ProvisioningOperation {
 	return original.PossibleProvisioningOperationValues()
+}
+func PossibleProvisioningStateValues() []ProvisioningState {
+	return original.PossibleProvisioningStateValues()
 }
 func PossibleResourceIdentityTypeValues() []ResourceIdentityType {
 	return original.PossibleResourceIdentityTypeValues()
